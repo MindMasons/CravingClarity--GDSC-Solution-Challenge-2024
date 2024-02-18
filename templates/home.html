@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Responsive Registration Form | CodingLab </title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+    // Function to format prediction value to have 2 decimal points
+    window.onload = function() {
+        var predictionElement = document.getElementById('prediction');
+        if (predictionElement !== null) {
+            var predictionValue = parseFloat(predictionElement.textContent);
+            predictionElement.textContent = predictionValue.toFixed(2);
+        }
+    };
+</script>
+<body>
+<div class="container">
+<div class="title">Stock Price Prediction</div>
+<form action="#" method="post">
+<div class="user-details">
+<div class="input-box">
+<span class="details">Open</span>
+<input type="text" placeholder="Enter the opening stock price" id="open_price" name="open_price" required>
+</div>
+
+<div class="input-box">
+<span class="details">Low</span>
+<input type="text" placeholder="Enter minimum stock price" id="high_price" name="high_price" required>
+</div>
+<div class="input-box">
+<span class="details">High</span>
+<input type="text" placeholder="Enter maximum stock price"  id="low_price" name="low_price" required>
+</div>
+<div class="input-box">
+    <span class="details">Volume</span>
+    <input type="text" placeholder="Enter the total shares" id="volume" name="volume" required>
+    </div>
+</div>
+<div class="button">
+<input type="submit" value="Predict Close">
+</div>
+</form>
+{% if prediction %}
+    <h2>Prediction:</h2>
+    <p id="prediction">{{ prediction[0][0] }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html
